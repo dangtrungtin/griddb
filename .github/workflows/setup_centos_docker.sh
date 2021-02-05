@@ -10,7 +10,7 @@ docker exec ${DOCKER_CONTAINER_NAME_CENTOS} /bin/bash -xec "yum install automake
 # Config server
 docker exec ${DOCKER_CONTAINER_NAME_CENTOS} /bin/bash -c "cd griddb \
 && ./bootstrap.sh \
-&& ./configure \
+&& ./configure --enable-activemq \
 && make \
 && bin/gs_passwd ${GRIDDB_USERNAME} -p ${GRIDDB_PASSWORD} \
 && sed -i 's/\"clusterName\":\"\"/\"clusterName\":\"${GRIDDB_CLUSTER_NAME}\"/g' conf/gs_cluster.json"
